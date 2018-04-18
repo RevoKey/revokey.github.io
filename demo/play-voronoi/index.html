@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="test.css">
+    <script type="text/javascript" src="delaunay.js"></script>
+    <script type="text/javascript" src="rhill-voronoi-core.js"></script>
+    <script type="text/javascript" src="test.js"></script>
+    <style>
+        canvas {
+            cursor: pointer;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body onload="Demo.init()">
+    <div id="divroot">
+        <div>
+            <div>该demo主要应用这两个开源项目</div>
+            <ul>
+                <li><a href="https://github.com/ironwallaby/delaunay" target="_blank" rel="external">Fast Delaunay Triangulation in JavaScript</a></li>
+                <li><a href="https://github.com/gorhill/Javascript-Voronoi" target="_blank" rel="external">A Javascript implementation of Fortune's algorithm to compute Voronoi cells</a></li>
+            </ul>
+        </div>
+        <div>
+            <input type="button" value="Generate" onclick="Demo.randomSites(parseInt(document.getElementById('siteCount').value,10),true);Demo.render();" />
+            <input type="text" id="siteCount" value="1000" size="5" maxlength="5" /> sites randomly
+            <br/>
+            <input type="checkbox" id="drawEdge" onchange="Demo.render();" />draw edges
+            <input type="checkbox" id="drawPath" onchange="Demo.render();" />draw paths
+            <br/>
+            <input type="button" value="relaxSites" onclick="Demo.relaxSites();" />
+            <a id="saveData"></a>
+            <input type="button" value="save" onclick="Demo.save();" />
+        </div>
+        <div>
+            <canvas id="voronoiCanvas" width="1024" height="1024"></canvas>
+        </div>
+    </div>
+</body>
+
+</html>

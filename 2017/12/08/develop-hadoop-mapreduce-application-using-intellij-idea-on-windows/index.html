@@ -1,0 +1,894 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="hadoop,intellij idea,mapreduce,maven," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="最近想看看什么推荐系统之类的东西，了解下发现常用的就是在big data平台上跑一些协同过滤算法。感觉还是潮流啊，没办法，也弄下玩玩吧，不然又要孤陋寡闻了。于是就想简单地弄个hadoop了。 为什么是windows上班用的电脑就是windows的啊，还有个macbook，不过暂时没插座了就没用了，如果不用windows的话估计随随便便就搞好了吧。 为什么是intellij idea电脑就这点内存，">
+<meta name="keywords" content="hadoop,intellij idea,mapreduce,maven">
+<meta property="og:type" content="article">
+<meta property="og:title" content="在windows上使用intellij idea和maven开发hadoop mapreduce程序的小尝试">
+<meta property="og:url" content="https://revokey.github.io/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/index.html">
+<meta property="og:site_name" content="幻想世界">
+<meta property="og:description" content="最近想看看什么推荐系统之类的东西，了解下发现常用的就是在big data平台上跑一些协同过滤算法。感觉还是潮流啊，没办法，也弄下玩玩吧，不然又要孤陋寡闻了。于是就想简单地弄个hadoop了。 为什么是windows上班用的电脑就是windows的啊，还有个macbook，不过暂时没插座了就没用了，如果不用windows的话估计随随便便就搞好了吧。 为什么是intellij idea电脑就这点内存，">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-04-18T07:03:35.082Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="在windows上使用intellij idea和maven开发hadoop mapreduce程序的小尝试">
+<meta name="twitter:description" content="最近想看看什么推荐系统之类的东西，了解下发现常用的就是在big data平台上跑一些协同过滤算法。感觉还是潮流啊，没办法，也弄下玩玩吧，不然又要孤陋寡闻了。于是就想简单地弄个hadoop了。 为什么是windows上班用的电脑就是windows的啊，还有个macbook，不过暂时没插座了就没用了，如果不用windows的话估计随随便便就搞好了吧。 为什么是intellij idea电脑就这点内存，">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://revokey.github.io/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/"/>
+
+
+
+
+
+  <title>在windows上使用intellij idea和maven开发hadoop mapreduce程序的小尝试 | 幻想世界</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">幻想世界</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://revokey.github.io/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="RevoKey">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="幻想世界">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">在windows上使用intellij idea和maven开发hadoop mapreduce程序的小尝试</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-08T18:13:02+08:00">
+                2017-12-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count disqus-comment-count"
+                        data-disqus-identifier="2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+             <span id="/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/" class="leancloud_visitors" data-flag-title="在windows上使用intellij idea和maven开发hadoop mapreduce程序的小尝试">
+               <span class="post-meta-divider">|</span>
+               <span class="post-meta-item-icon">
+                 <i class="fa fa-eye"></i>
+               </span>
+               
+                 <span class="post-meta-item-text">阅读次数 </span>
+               
+                 <span class="leancloud-visitors-count"></span>
+             </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="page-pv"><i class="fa fa-file-o"></i>
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>最近想看看什么推荐系统之类的东西，了解下发现常用的就是在big data平台上跑一些协同过滤算法。感觉还是潮流啊，没办法，也弄下玩玩吧，不然又要孤陋寡闻了。于是就想简单地弄个hadoop了。</p>
+<h1 id="为什么是windows"><a href="#为什么是windows" class="headerlink" title="为什么是windows"></a>为什么是windows</h1><p>上班用的电脑就是windows的啊，还有个macbook，不过暂时没插座了就没用了，如果不用windows的话估计随随便便就搞好了吧。</p>
+<h1 id="为什么是intellij-idea"><a href="#为什么是intellij-idea" class="headerlink" title="为什么是intellij idea"></a>为什么是intellij idea</h1><p>电脑就这点内存，这破东西我也不想用啊，可是也没怎么用过其他的，这个ui看上去还行吧就用了，毕竟android studio也就差不多这个破东西。</p>
+<h1 id="基本的东西就略过了"><a href="#基本的东西就略过了" class="headerlink" title="基本的东西就略过了"></a>基本的东西就略过了</h1><p>虽然说写的这些也是很基本的东西，但是像安装idea啊maven啊新建project啊什么的大谷鸽一下很快就就有能用的信息了，这里就不重复了吧。我主要是想记录一下我谷鸽了好久都是没卵用的东西。</p>
+<h1 id="仅仅跑一下最基本的wordcount例子"><a href="#仅仅跑一下最基本的wordcount例子" class="headerlink" title="仅仅跑一下最基本的wordcount例子"></a>仅仅跑一下最基本的wordcount例子</h1><h2 id="需要依赖些什么包"><a href="#需要依赖些什么包" class="headerlink" title="需要依赖些什么包"></a>需要依赖些什么包</h2><p>maven这东西用起来挺爽的，我这里也用了，在pom.xml里写一下依赖idea就帮你搞定依赖了，就直接把内容记录一下好了。</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></div><div class="line">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></div><div class="line">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.revokey<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>wordcount<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>apache<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.apache.org<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-mapreduce-client-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-mapreduce-client-jobclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-common<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></div></pre></td></tr></table></figure>
+<h2 id="需不需要hadoop啊hdfs啊之类的"><a href="#需不需要hadoop啊hdfs啊之类的" class="headerlink" title="需不需要hadoop啊hdfs啊之类的"></a>需不需要hadoop啊hdfs啊之类的</h2><p>严格来说，只是跑一下最简单的wordcount，什么集群啊伪集群的都是不需要的，但是依我亲测，windows上的hadoop工具，which provides basic command line utilities for Hadoop on Windows，这个破东西是必须的。只用一台windows电脑，装上idea和maven，下载好windows上的hadoop工具，就是winutils.exe和hadoop.dll那几个文件，建一个工程，copy一下wordcount的代码，run，就ok了。</p>
+<p>想想也知道肯定需要一个hadoop的运行程序的，毕竟你写的只是mapreduce程序的逻辑，然后还是要用hadoop去调用的。hadoop官网上的示例都写了，是bin/hadoop jar your_mapreduce.jar这要跑的。你依赖里都是hadoop的库而已，哪来hadoop可执行文件，所以得弄一个啊。像大谷鸽一下就搜到的这些文章，虽然没错，但都tm是标题党。幸好只是基本的尝试的话，这个windows的hadoop工具并不需要跟你依赖的hadoop包版本一致，所以我依赖的2.9.0版本，也可以用2.8.1版本的工具。因为这个现成的是别人弄好的，没法对版本要求太多啊，要自己编译的话那就很蛋疼了。┑(￣Д ￣)┍</p>
+<h2 id="关于环境变量"><a href="#关于环境变量" class="headerlink" title="关于环境变量"></a>关于环境变量</h2><p>虽然我现在还不知道为什么，但有两个环境变量是需要设置的，否则一坨错误就冒出来了。</p>
+<p>首先是HADOOP_HOME，这个要设置为前面提到的windows上的hadoop工具所在的目录。更具体一点，是要在%HADOOP_HOME%/bin里找到winutils.exe和hadoop.dll那几个文件，否则就会出现”java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.”这样的异常。也可以再代码里设置：”System.setProperty(“hadoop.home.dir”, “路径”);”。</p>
+<p>然后是HADOOP_HOME要添加到PATH里面，否则会出现”org.apache.hadoop.io.nativeio.NativeIO$Windows.a<br>ccess0(Ljava/lang/String;I)Z”这样的错误。有的文章说用管理员权限运行idea能处理这个错误，毛线，忽悠人的。</p>
+<p>还有一个不是必须的，hadoop.tmp.dir要设置一下，否则hadoop工具会在你不知道的路径上创建一坨文件目录。可以这样设置：”conf.set(“hadoop.tmp.dir”, “你想要的路径”);”。</p>
+<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>目前就记下这些，后面有再补充吧。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>饮杯茶O(∩_∩)O~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>Donate</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-pay.jpg" alt="RevoKey WeChat Pay"/>
+        <p>WeChat Pay</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="RevoKey Alipay"/>
+        <p>Alipay</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
+          
+            <a href="/tags/intellij-idea/" rel="tag"># intellij idea</a>
+          
+            <a href="/tags/mapreduce/" rel="tag"># mapreduce</a>
+          
+            <a href="/tags/maven/" rel="tag"># maven</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/13/cmake-error-vcpkg/" rel="next" title="vcpkg导致cmake报错">
+                <i class="fa fa-chevron-left"></i> vcpkg导致cmake报错
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div id="disqus_thread">
+        <noscript>
+          Please enable JavaScript to view the
+          <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a>
+        </noscript>
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="RevoKey" />
+          <p class="site-author-name" itemprop="name">RevoKey</p>
+           
+              <p class="site-description motion-element" itemprop="description">这里是荒野，所以花才开。</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么是windows"><span class="nav-number">1.</span> <span class="nav-text">为什么是windows</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么是intellij-idea"><span class="nav-number">2.</span> <span class="nav-text">为什么是intellij idea</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#基本的东西就略过了"><span class="nav-number">3.</span> <span class="nav-text">基本的东西就略过了</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#仅仅跑一下最基本的wordcount例子"><span class="nav-number">4.</span> <span class="nav-text">仅仅跑一下最基本的wordcount例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#需要依赖些什么包"><span class="nav-number">4.1.</span> <span class="nav-text">需要依赖些什么包</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#需不需要hadoop啊hdfs啊之类的"><span class="nav-number">4.2.</span> <span class="nav-text">需不需要hadoop啊hdfs啊之类的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于环境变量"><span class="nav-number">4.3.</span> <span class="nav-text">关于环境变量</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最后"><span class="nav-number">5.</span> <span class="nav-text">最后</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy;  2017 - 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">RevoKey</span>
+</div>
+
+
+
+        
+<div class="busuanzi-count">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="site-uv">
+      <i class="fa fa-user"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span>
+      
+    </span>
+  
+
+  
+    <span class="site-pv">
+      <i class="fa fa-eye"></i>
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span>
+      
+    </span>
+  
+</div>
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+    
+      <script id="dsq-count-scr" src="https://revokey.disqus.com/count.js" async></script>
+    
+
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'https://revokey.github.io/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/';
+          this.page.identifier = '2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/';
+          this.page.title = '在windows上使用intellij idea和maven开发hadoop mapreduce程序的小尝试';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://revokey.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
+    
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.4.js"></script>
+  <script>AV.initialize("8NAXdudSIIYkyMLmH9yuUqqT-gzGzoHsz", "sh3x2psEwz1cAfKqMRhhf7rx");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
