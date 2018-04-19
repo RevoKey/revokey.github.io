@@ -106,23 +106,25 @@
 
 
 
-  <meta name="description" content="这里是荒野，所以花才开。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="幻想世界">
-<meta property="og:url" content="https://revokey.github.io/index.html">
+  <meta name="description" content="网上应该一搜就会有很多关于hdfs基本操作的文章和代码，但是在一些细节上，对于新手很重要的那些信息，都没有比较清楚地说明。对，就是对我这样的新手很重要的内容，找了好久找不到。所以，经过一些实践后，我就觉得很有必要把这些东西，新手真的需要的东西稍微记录一下。 为什么是远程如果只是像网上多数文章里的情景，那么基本就一台机器上装套hadoop，然后也在同样的机器上去尝试，应该是一点问题都没有吧。不过我是">
+<meta name="keywords" content="java,hadoop,hdfs">
+<meta property="og:type" content="article">
+<meta property="og:title" content="使用hadoop java api操作远程hdfs">
+<meta property="og:url" content="https://revokey.github.io/2018/04/18/control-remote-hdfs-using-java-api/index.html">
 <meta property="og:site_name" content="幻想世界">
-<meta property="og:description" content="这里是荒野，所以花才开。">
+<meta property="og:description" content="网上应该一搜就会有很多关于hdfs基本操作的文章和代码，但是在一些细节上，对于新手很重要的那些信息，都没有比较清楚地说明。对，就是对我这样的新手很重要的内容，找了好久找不到。所以，经过一些实践后，我就觉得很有必要把这些东西，新手真的需要的东西稍微记录一下。 为什么是远程如果只是像网上多数文章里的情景，那么基本就一台机器上装套hadoop，然后也在同样的机器上去尝试，应该是一点问题都没有吧。不过我是">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-04-19T09:54:53.241Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="幻想世界">
-<meta name="twitter:description" content="这里是荒野，所以花才开。">
+<meta name="twitter:title" content="使用hadoop java api操作远程hdfs">
+<meta name="twitter:description" content="网上应该一搜就会有很多关于hdfs基本操作的文章和代码，但是在一些细节上，对于新手很重要的那些信息，都没有比较清楚地说明。对，就是对我这样的新手很重要的内容，找了好久找不到。所以，经过一些实践后，我就觉得很有必要把这些东西，新手真的需要的东西稍微记录一下。 为什么是远程如果只是像网上多数文章里的情景，那么基本就一台机器上装套hadoop，然后也在同样的机器上去尝试，应该是一点问题都没有吧。不过我是">
 
 
 
 
 
 
-  <link rel="canonical" href="https://revokey.github.io/"/>
+  <link rel="canonical" href="https://revokey.github.io/2018/04/18/control-remote-hdfs-using-java-api/"/>
 
 
 
@@ -132,7 +134,7 @@
   };
 </script>
 
-  <title>幻想世界</title>
+  <title>使用hadoop java api操作远程hdfs | 幻想世界</title>
   
 
 
@@ -179,8 +181,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -220,7 +221,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
     <a href="/" rel="section">
       <i class="menu-item-icon fa fa-fw fa-home"></i> <br />首页</a>
   </li>
@@ -283,9 +284,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -317,11 +318,7 @@
 
         
         
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/18/control-remote-hdfs-using-java-api/" itemprop="url">
-                  使用hadoop java api操作远程hdfs
-                </a>
+          <h2 class="post-title" itemprop="name headline">使用hadoop java api操作远程hdfs
               
             
           </h2>
@@ -379,7 +376,7 @@
               </span>
               
                 <a href="/2018/04/18/control-remote-hdfs-using-java-api/#SOHUCS" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span id="url::https://revokey.github.io/2018/04/18/control-remote-hdfs-using-java-api/" class="cy_cmt_count" data-xid="2018/04/18/control-remote-hdfs-using-java-api/" itemprop="commentsCount" ></span>
+                  <span class="post-meta-item-text">评论数：</span> <span id="changyan_count_unit" class="post-comments-count hc-comment-count" data-xid="2018/04/18/control-remote-hdfs-using-java-api/" itemprop="commentsCount"></span>
                 </a>
               
             
@@ -400,6 +397,14 @@
           
 
           
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon"
+            >
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>
+            </span>
+          
 
           
 
@@ -418,9 +423,7 @@
       
 
       
-        
-          
-            <p>网上应该一搜就会有很多关于hdfs基本操作的文章和代码，但是在一些细节上，对于新手很重要的那些信息，都没有比较清楚地说明。对，就是对我这样的新手很重要的内容，找了好久找不到。所以，经过一些实践后，我就觉得很有必要把这些东西，新手真的需要的东西稍微记录一下。</p>
+        <p>网上应该一搜就会有很多关于hdfs基本操作的文章和代码，但是在一些细节上，对于新手很重要的那些信息，都没有比较清楚地说明。对，就是对我这样的新手很重要的内容，找了好久找不到。所以，经过一些实践后，我就觉得很有必要把这些东西，新手真的需要的东西稍微记录一下。</p>
 <h1 id="为什么是远程"><a href="#为什么是远程" class="headerlink" title="为什么是远程"></a>为什么是远程</h1><p>如果只是像网上多数文章里的情景，那么基本就一台机器上装套hadoop，然后也在同样的机器上去尝试，应该是一点问题都没有吧。不过我是没有尝试过了，毕竟对我来说，很难搞到一台带ui的linux机器给我装hadoop和ide去搞开发啊，基本就是windows。而且真正工作要用到hdfs的话，基本不可能就装在自己的机器吧，所以最终还是得要连接上远程的hdfs去操作的呢。那么一上来就这样不是更好么？</p>
 <h1 id="最简单的例子"><a href="#最简单的例子" class="headerlink" title="最简单的例子"></a>最简单的例子</h1><p>乱七八糟的不多写了。首先上个最简单的例子，能够证明成功连上了远端的hdfs并读取其中数据的例子。</p>
 <h2 id="pom-xml"><a href="#pom-xml" class="headerlink" title="pom.xml"></a>pom.xml</h2><figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></div><div class="line">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></div><div class="line">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.revokey.demo<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>demo-hdfs<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-client<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>3.1.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></div></pre></td></tr></table></figure>
@@ -446,8 +449,6 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">conf.set(<span class="string">"dfs.client.use.datanode.hostname"</span>, <span class="string">"true"</span>);</div></pre></td></tr></table></figure>
 <h1 id="完整例子"><a href="#完整例子" class="headerlink" title="完整例子"></a>完整例子</h1><p>最后是一个简单的例子，包括了各种基本的文件和目录操作。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">package</span> com.revokey.demo;</div><div class="line"></div><div class="line"><span class="keyword">import</span> org.apache.hadoop.conf.Configuration;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.fs.*;</div><div class="line"><span class="keyword">import</span> org.apache.hadoop.io.IOUtils;</div><div class="line"><span class="keyword">import</span> org.slf4j.Logger;</div><div class="line"><span class="keyword">import</span> org.slf4j.LoggerFactory;</div><div class="line"></div><div class="line"><span class="keyword">import</span> java.io.IOException;</div><div class="line"><span class="keyword">import</span> java.io.OutputStream;</div><div class="line"></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HdfsDemo</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Logger log = LoggerFactory.getLogger(HdfsDemo.class);</div><div class="line"></div><div class="line">    <span class="keyword">private</span> FileSystem fs;</div><div class="line"></div><div class="line">    HdfsDemo() <span class="keyword">throws</span> IOException &#123;</div><div class="line">        Configuration conf = <span class="keyword">new</span> Configuration();</div><div class="line">        conf.set(<span class="string">"fs.defaultFS"</span>, <span class="string">"hdfs://hadoop-namenode:8020"</span>);</div><div class="line">        conf.set(<span class="string">"dfs.client.use.datanode.hostname"</span>, <span class="string">"true"</span>);</div><div class="line">        fs = FileSystem.get(conf);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Close</span><span class="params">()</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        fs.close();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ListStatus</span><span class="params">(String path)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        FileStatus[] statuses = fs.listStatus(<span class="keyword">new</span> Path(<span class="string">"/"</span>));</div><div class="line">        <span class="keyword">for</span> (FileStatus status : statuses) &#123;</div><div class="line">            log.info(status.toString());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">ReadFile</span><span class="params">(String path, OutputStream output)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        FSDataInputStream input = fs.open(<span class="keyword">new</span> Path(path));</div><div class="line">        IOUtils.copyBytes(input, output, <span class="number">4096</span>);</div><div class="line">        input.close();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">CreateDir</span><span class="params">(String dir)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        fs.mkdirs(<span class="keyword">new</span> Path(dir));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">CreateFile</span><span class="params">(String src, String dst)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        fs.copyFromLocalFile(<span class="keyword">false</span>, <span class="keyword">true</span>, <span class="keyword">new</span> Path(src), <span class="keyword">new</span> Path(dst));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Download</span><span class="params">(String src, String dst)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        fs.copyToLocalFile(<span class="keyword">new</span> Path(src), <span class="keyword">new</span> Path(dst));</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">void</span> <span class="title">Delete</span><span class="params">(String path, <span class="keyword">final</span> <span class="keyword">boolean</span> recursive)</span> <span class="keyword">throws</span> IOException </span>&#123;</div><div class="line">        fs.delete(<span class="keyword">new</span> Path(path), recursive);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</div><div class="line">        HdfsDemo demo = <span class="keyword">new</span> HdfsDemo();</div><div class="line">        demo.CreateDir(<span class="string">"/test/123"</span>);</div><div class="line">        demo.CreateFile(<span class="string">"C:/Users/Administrator/Desktop/test.txt"</span>, <span class="string">"/test.txt"</span>);</div><div class="line">        demo.CreateFile(<span class="string">"C:/Users/Administrator/Desktop/test.txt"</span>, <span class="string">"/test/123/test.txt"</span>);</div><div class="line">        demo.ListStatus(<span class="string">"/"</span>);</div><div class="line">        demo.ReadFile(<span class="string">"/test.txt"</span>, System.out);</div><div class="line">        demo.Download(<span class="string">"/test"</span>, <span class="string">"C:/Users/Administrator/Desktop/"</span>);</div><div class="line">        demo.Delete(<span class="string">"/test.txt"</span>, <span class="keyword">false</span>);</div><div class="line">        demo.Delete(<span class="string">"/test"</span>, <span class="keyword">true</span>);</div><div class="line">        demo.Close();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-          
-        
       
     </div>
 
@@ -460,381 +461,74 @@
     
 
     
+      <div>
+        <div style="padding: 10px 0; margin: 20px auto; width: 90%; text-align: center;">
+  <div>饮杯茶O(∩_∩)O~</div>
+  <button id="rewardButton" disable="enable" onclick="var qr = document.getElementById('QR'); if (qr.style.display === 'none') {qr.style.display='block';} else {qr.style.display='none'}">
+    <span>打赏</span>
+  </button>
+  <div id="QR" style="display: none;">
+
+    
+      <div id="wechat" style="display: inline-block">
+        <img id="wechat_qr" src="/images/wechat-pay.jpg" alt="RevoKey 微信支付"/>
+        <p>微信支付</p>
+      </div>
+    
+
+    
+      <div id="alipay" style="display: inline-block">
+        <img id="alipay_qr" src="/images/alipay.jpg" alt="RevoKey 支付宝"/>
+        <p>支付宝</p>
+      </div>
+    
+
+    
+
+  </div>
+</div>
+
+      </div>
+    
 
     
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://revokey.github.io/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RevoKey">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="幻想世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/" itemprop="url">
-                  在windows上使用intellij idea和maven开发hadoop mapreduce程序的小尝试
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-12-08 18:13:02" itemprop="dateCreated datePublished" datetime="2017-12-08T18:13:02+08:00">2017-12-08</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2018-04-18 15:03:35" itemprop="dateModified" datetime="2018-04-18T15:03:35+08:00">2018-04-18</time>
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/java/" rel="tag"># java</a>
           
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/#SOHUCS" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span id="url::https://revokey.github.io/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/" class="cy_cmt_count" data-xid="2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
+            <a href="/tags/hadoop/" rel="tag"># hadoop</a>
           
-
+            <a href="/tags/hdfs/" rel="tag"># hdfs</a>
           
-          
-             <span id="/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/" class="leancloud_visitors" data-flag-title="在windows上使用intellij idea和maven开发hadoop mapreduce程序的小尝试">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>最近想看看什么推荐系统之类的东西，了解下发现常用的就是在big data平台上跑一些协同过滤算法。感觉还是潮流啊，没办法，也弄下玩玩吧，不然又要孤陋寡闻了。于是就想简单地弄个hadoop了。</p>
-<h1 id="为什么是windows"><a href="#为什么是windows" class="headerlink" title="为什么是windows"></a>为什么是windows</h1><p>上班用的电脑就是windows的啊，还有个macbook，不过暂时没插座了就没用了，如果不用windows的话估计随随便便就搞好了吧。</p>
-<h1 id="为什么是intellij-idea"><a href="#为什么是intellij-idea" class="headerlink" title="为什么是intellij idea"></a>为什么是intellij idea</h1><p>电脑就这点内存，这破东西我也不想用啊，可是也没怎么用过其他的，这个ui看上去还行吧就用了，毕竟android studio也就差不多这个破东西。</p>
-<h1 id="基本的东西就略过了"><a href="#基本的东西就略过了" class="headerlink" title="基本的东西就略过了"></a>基本的东西就略过了</h1><p>虽然说写的这些也是很基本的东西，但是像安装idea啊maven啊新建project啊什么的大谷鸽一下很快就就有能用的信息了，这里就不重复了吧。我主要是想记录一下我谷鸽了好久都是没卵用的东西。</p>
-<h1 id="仅仅跑一下最基本的wordcount例子"><a href="#仅仅跑一下最基本的wordcount例子" class="headerlink" title="仅仅跑一下最基本的wordcount例子"></a>仅仅跑一下最基本的wordcount例子</h1><h2 id="需要依赖些什么包"><a href="#需要依赖些什么包" class="headerlink" title="需要依赖些什么包"></a>需要依赖些什么包</h2><p>maven这东西用起来挺爽的，我这里也用了，在pom.xml里写一下依赖idea就帮你搞定依赖了，就直接把内容记录一下好了。</p>
-<figure class="highlight xml"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version="1.0" encoding="UTF-8"?&gt;</div><div class="line"><span class="tag">&lt;<span class="name">project</span> <span class="attr">xmlns</span>=<span class="string">"http://maven.apache.org/POM/4.0.0"</span></span></div><div class="line">         <span class="attr">xmlns:xsi</span>=<span class="string">"http://www.w3.org/2001/XMLSchema-instance"</span></div><div class="line">         <span class="attr">xsi:schemaLocation</span>=<span class="string">"http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd"</span>&gt;</div><div class="line">    <span class="tag">&lt;<span class="name">modelVersion</span>&gt;</span>4.0.0<span class="tag">&lt;/<span class="name">modelVersion</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.revokey<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>wordcount<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0-SNAPSHOT<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">repositories</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">repository</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">id</span>&gt;</span>apache<span class="tag">&lt;/<span class="name">id</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">url</span>&gt;</span>http://maven.apache.org<span class="tag">&lt;/<span class="name">url</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">repository</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">repositories</span>&gt;</span></div><div class="line"></div><div class="line">    <span class="tag">&lt;<span class="name">dependencies</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-mapreduce-client-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-mapreduce-client-jobclient<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">dependency</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.hadoop<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>hadoop-common<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></div><div class="line">            <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></div><div class="line">        <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">dependencies</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">project</span>&gt;</span></div></pre></td></tr></table></figure>
-<h2 id="需不需要hadoop啊hdfs啊之类的"><a href="#需不需要hadoop啊hdfs啊之类的" class="headerlink" title="需不需要hadoop啊hdfs啊之类的"></a>需不需要hadoop啊hdfs啊之类的</h2><p>严格来说，只是跑一下最简单的wordcount，什么集群啊伪集群的都是不需要的，但是依我亲测，windows上的hadoop工具，which provides basic command line utilities for Hadoop on Windows，这个破东西是必须的。只用一台windows电脑，装上idea和maven，下载好windows上的hadoop工具，就是winutils.exe和hadoop.dll那几个文件，建一个工程，copy一下wordcount的代码，run，就ok了。</p>
-<p>想想也知道肯定需要一个hadoop的运行程序的，毕竟你写的只是mapreduce程序的逻辑，然后还是要用hadoop去调用的。hadoop官网上的示例都写了，是bin/hadoop jar your_mapreduce.jar这要跑的。你依赖里都是hadoop的库而已，哪来hadoop可执行文件，所以得弄一个啊。像大谷鸽一下就搜到的这些文章，虽然没错，但都tm是标题党。幸好只是基本的尝试的话，这个windows的hadoop工具并不需要跟你依赖的hadoop包版本一致，所以我依赖的2.9.0版本，也可以用2.8.1版本的工具。因为这个现成的是别人弄好的，没法对版本要求太多啊，要自己编译的话那就很蛋疼了。┑(￣Д ￣)┍</p>
-<h2 id="关于环境变量"><a href="#关于环境变量" class="headerlink" title="关于环境变量"></a>关于环境变量</h2><p>虽然我现在还不知道为什么，但有两个环境变量是需要设置的，否则一坨错误就冒出来了。</p>
-<p>首先是HADOOP_HOME，这个要设置为前面提到的windows上的hadoop工具所在的目录。更具体一点，是要在%HADOOP_HOME%/bin里找到winutils.exe和hadoop.dll那几个文件，否则就会出现”java.io.FileNotFoundException: java.io.FileNotFoundException: HADOOP_HOME and hadoop.home.dir are unset.”这样的异常。也可以再代码里设置：”System.setProperty(“hadoop.home.dir”, “路径”);”。</p>
-<p>然后是HADOOP_HOME要添加到PATH里面，否则会出现”org.apache.hadoop.io.nativeio.NativeIO$Windows.a<br>ccess0(Ljava/lang/String;I)Z”这样的错误。有的文章说用管理员权限运行idea能处理这个错误，毛线，忽悠人的。</p>
-<p>还有一个不是必须的，hadoop.tmp.dir要设置一下，否则hadoop工具会在你不知道的路径上创建一坨文件目录。可以这样设置：”conf.set(“hadoop.tmp.dir”, “你想要的路径”);”。</p>
-<h1 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h1><p>目前就记下这些，后面有再补充吧。</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
       
 
       
       
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
       
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://revokey.github.io/2017/09/13/cmake-error-vcpkg/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RevoKey">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="幻想世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/09/13/cmake-error-vcpkg/" itemprop="url">
-                  vcpkg导致cmake报错
-                </a>
-              
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
+              <a href="/2017/12/08/develop-hadoop-mapreduce-application-using-intellij-idea-on-windows/" rel="next" title="在windows上使用intellij idea和maven开发hadoop mapreduce程序的小尝试">
+                <i class="fa fa-chevron-left"></i> 在windows上使用intellij idea和maven开发hadoop mapreduce程序的小尝试
+              </a>
             
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
             
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-09-13 17:32:41" itemprop="dateCreated datePublished" datetime="2017-09-13T17:32:41+08:00">2017-09-13</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-12-28 12:02:03" itemprop="dateModified" datetime="2017-12-28T12:02:03+08:00">2017-12-28</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/09/13/cmake-error-vcpkg/#SOHUCS" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span id="url::https://revokey.github.io/2017/09/13/cmake-error-vcpkg/" class="cy_cmt_count" data-xid="2017/09/13/cmake-error-vcpkg/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/2017/09/13/cmake-error-vcpkg/" class="leancloud_visitors" data-flag-title="vcpkg导致cmake报错">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>一直都不太爽那个visualgdb，无奈人家搞windows出来的，就是喜欢啥都用vs，除了vs啥都不会用了，到现在用的还是盗版。感觉这样没有前途啊，就想耍耍什么autotools啊cmake啊。autotools那一坨一下子在现在的项目上实在搞不起来，就先试试cmake吧。正好电脑上有个用cmake的开源小项目，就想看看人家CMakeList怎么写的，也试试编译，谁知道就懵逼了。</p>
-<h2 id="所以windows上不用vs就是蛋疼"><a href="#所以windows上不用vs就是蛋疼" class="headerlink" title="所以windows上不用vs就是蛋疼"></a>所以windows上不用vs就是蛋疼</h2><p>cmake嘛，用起来应该很爽啊，在windows上应该cmake .一下就噼里啪啦地冒出个工程文件来了啊。应该是这样的，之前也是这样子的，怎么今天就给我一波错误了呢。什么”No CMAKE_C_COMPILER could be found.”，什么”No CMAKE_CXX_COMPILER could be found.”，什么”cannot open file ‘ucrtd.lib’”，各种错误一个接一个……可是这些错误不是在逗我吗，明明都有啊，你怎么就找不到了呢？然后就怀疑是不是之前装的visual studio 2017傻逼了，赶紧升级了一波，各种组件安装了一波，破网速搞了好久，感觉稳了，再cmake .一下……我不想玩了。</p>
-<h2 id="还是谷鸽屌"><a href="#还是谷鸽屌" class="headerlink" title="还是谷鸽屌"></a>还是谷鸽屌</h2><p>遇事不决上谷鸽！然后看到了”cmake -DCMAKE_TOOLCHAIN_FILE=your_vcpkg_path/scripts/buildsystems/vcpkg.cmake”这么一行字。vcpkg？怎么好像在哪里见过呢……本地搜一下，原来我去年安装了用了一下啊。好吧，加上去试一下，咦，怎么错误都被消灭了啊……不爽，感觉就是这破东西搞的鬼，然后把vcpkg干掉了，再来一遍cmake .，稳了！果然就是这破东西让cmake傻逼了！至于这个vcpkg到底在背后干了啥，等再需要用到它再说吧……</p>
-
-          
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -844,207 +538,24 @@
   </article>
 
 
-    
-      
 
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://revokey.github.io/2017/04/21/play-voronoi/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="RevoKey">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="幻想世界">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h2 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/04/21/play-voronoi/" itemprop="url">
-                  play-voronoi
-                </a>
-              
-            
-          </h2>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2017-04-21 18:13:02" itemprop="dateCreated datePublished" datetime="2017-04-21T18:13:02+08:00">2017-04-21</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2017-12-28 12:02:03" itemprop="dateModified" datetime="2017-12-28T12:02:03+08:00">2017-12-28</time>
-              
-            
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-              <span class="post-meta-divider">|</span>
-              <span class="post-meta-item-icon">
-                <i class="fa fa-comment-o"></i>
-              </span>
-              
-                <a href="/2017/04/21/play-voronoi/#SOHUCS" itemprop="discussionUrl">
-                  <span class="post-meta-item-text">评论数：</span> <span id="url::https://revokey.github.io/2017/04/21/play-voronoi/" class="cy_cmt_count" data-xid="2017/04/21/play-voronoi/" itemprop="commentsCount" ></span>
-                </a>
-              
-            
-          
-
-          
-          
-             <span id="/2017/04/21/play-voronoi/" class="leancloud_visitors" data-flag-title="play-voronoi">
-               <span class="post-meta-divider">|</span>
-               <span class="post-meta-item-icon">
-                 <i class="fa fa-eye"></i>
-               </span>
-               
-                 <span class="post-meta-item-text">阅读次数：</span>
-               
-                 <span class="leancloud-visitors-count"></span>
-             </span>
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body han-init-context" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>传说中有个叫<a href="http://ssw.xyz-soft.com/" target="_blank" rel="noopener">SSW</a>的，我玩了又蝗了又玩了又蝗了的游戏，里面的星图是我觉得比较有意思的东西。最近心血来潮弄了个<a href="https://unity3d.com/" target="_blank" rel="noopener">Unity</a>来耍，就想着也画个这样的图出来耍耍。</p>
-<h2 id="所谓星图"><a href="#所谓星图" class="headerlink" title="所谓星图"></a>所谓星图</h2><p>这东西其实就是一个平面内的无向连通图，顶点比较均匀地分布在一个圆内，度数为[1,4]，且所有边不存在顶点以外的交点。</p>
-<p>以前<a href="http://bbs.xyz-soft.com/space.php?action=viewpro&amp;uid=1" target="_blank" rel="noopener">fox</a>勤奋的时候，每次游戏轮回之后星图都会更新的，回想一下每次至少都是有几百个顶点的图，我想他们程序猿总不至于这么傻逼每次都手动画吧，肯定是弄了个什么算法扑通一下就出来一坨数据才对。</p>
-<h2 id="怎么弄呢"><a href="#怎么弄呢" class="headerlink" title="怎么弄呢"></a>怎么弄呢</h2><p>想怎么弄，首先要知道自己要弄个啥。</p>
-<ol>
-<li>在一个圆内生成一坨<em>均匀分布</em>的顶点</li>
-<li>以这些顶点建立一个<em>最小度数为1</em>，<em>最大度数为4</em>，且<em>所有边不存在顶点以外的交点</em>的<em>无向连通图</em></li>
-</ol>
-<p>想来想去好像就上面这丁点条件就够了，咦，好像很简单的样子？然并卵，并不知道该怎么办。</p>
-<p>问了下大牛同学们，说把每个顶点与最近的4个顶点连起来，顶多再去掉交叉的边就完了，好像还能证明？我感觉就是把问题换个描述？我只是想把这东西弄出来，才不要又跳到图论的坑里面去啊。</p>
-<p>我还直觉这东西肯定几十年前就被研究透了，出来一大坨算法和实现，可以扑通一下就弄出来的那种，毕竟是fox也弄出来了的……</p>
-<h2 id="还是谷鸽屌"><a href="#还是谷鸽屌" class="headerlink" title="还是谷鸽屌"></a>还是谷鸽屌</h2><p>所以还是上秘密武器<a href="https://www.google.com/" target="_blank" rel="noopener">大谷鸽</a>吧。</p>
-<p>然而这东西也不好搜啊，换了好多遍关键词才找到像是自己想要的答案的<a href="http://iivan.in/2015/06/01/%E4%B8%BA%E6%B8%B8%E6%88%8F%E7%94%9F%E6%88%90%E5%A4%9A%E8%BE%B9%E5%BD%A2%E5%9C%B0%E5%9B%BE-1-3/" target="_blank" rel="noopener">相关文章</a>，然后顺藤摸瓜找到了关键的几个东西。虽然并不确定fox是不是类似这样搞的，但耍了个<a href="https://revokey.github.io/demo/play-voronoi">demo</a>后感觉差不多样子，估计就是了吧。</p>
-<ul>
-<li><a href="https://www.google.com.tw/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjf_K7RpbrTAhXEVrwKHYNFAoIQFggpMAE&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FVoronoi_diagram&amp;usg=AFQjCNHNMRReLc9AP9O2gqe4uee6LlSjQA&amp;sig2=RTYA5D7Co6JGRkkk7EzRiQ" target="_blank" rel="noopener">Voronoi diagram</a></li>
-<li><a href="https://www.google.com.tw/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwiD08WEprrTAhUJybwKHTvfBocQFggjMAA&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FFortune%2527s_algorithm&amp;usg=AFQjCNH2c7uJqvGm2tPN6C7TnZFjv636Sw&amp;sig2=jwKB4L1el4r95C-Kz9Ywxw" target="_blank" rel="noopener">Fortune’s algorithm</a></li>
-<li><a href="https://www.google.com.tw/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjr7u3ypbrTAhXIWrwKHV3xAYQQFggjMAA&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FLloyd%2527s_algorithm&amp;usg=AFQjCNEIqbFMqsucL5XNB0kCE1b9otvxjg&amp;sig2=Tcau_g102los67wOTTrFxg" target="_blank" rel="noopener">Lloyd’s algorithm</a></li>
-<li><a href="https://www.google.com.tw/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=1&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjXteWZprrTAhWHVLwKHeCbBH4QFggjMAA&amp;url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FDelaunay_triangulation&amp;usg=AFQjCNGpaul9nJ4o4zNzqnui6WCrK3AXhw&amp;sig2=8mr8_LBXSIjOk6M-3LjGAA" target="_blank" rel="noopener">Delaunay triangulation</a></li>
-</ul>
-<p>关键就是这几个东西了，算法看上去似乎都不复杂，好像应用还很广呢。里面到底是什么样个究竟就先不管啦，反正弄的<a href="https://revokey.github.io/demo/play-voronoi">demo</a>能把数据搞出来了。</p>
-
-          
-        
+    <div class="post-spread">
       
     </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
   </div>
-  
-  
-  
-  </article>
-
-
-    
-  </section>
-
-  
 
 
           </div>
           
+
+  
+    <div class="comments" id="comments">
+      <div id="SOHUCS"></div>
+    </div>
+
+  
+
+
 
         </div>
         
@@ -1065,8 +576,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1169,6 +689,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#为什么是远程"><span class="nav-number">1.</span> <span class="nav-text">为什么是远程</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最简单的例子"><span class="nav-number">2.</span> <span class="nav-text">最简单的例子</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#pom-xml"><span class="nav-number">2.1.</span> <span class="nav-text">pom.xml</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HdfsDemo-java"><span class="nav-number">2.2.</span> <span class="nav-text">HdfsDemo.java</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用idea-debug的输出"><span class="nav-number">2.3.</span> <span class="nav-text">使用idea debug的输出</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#上传文件"><span class="nav-number">3.</span> <span class="nav-text">上传文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户权限问题"><span class="nav-number">3.1.</span> <span class="nav-text">用户权限问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#使用腾讯云emr的问题"><span class="nav-number">3.2.</span> <span class="nav-text">使用腾讯云emr的问题</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#完整例子"><span class="nav-number">4.</span> <span class="nav-text">完整例子</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1317,6 +853,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.2.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.2.0"></script>
+
+
 
   
 
@@ -1347,7 +887,18 @@
 
 
   
-    <script id="cy_cmt_num" src="https://changyan.sohu.com/upload/plugins/plugins.list.count.js?clientId=cytzrz8a6"></script>
+    <script type="text/javascript">
+    (function(){
+      var appid = 'cytzrz8a6';
+      var conf = '0d2579e9f4573b53c218a3fe337fea98';
+      var width = window.innerWidth || document.documentElement.clientWidth;
+      if (width < 960) {
+      window.document.write('<script id="changyan_mobile_js" charset="utf-8" type="text/javascript" src="https://changyan.sohu.com/upload/mobile/wap-js/changyan_mobile.js?client_id=' + appid + '&conf=' + conf + '"><\/script>'); } else { var loadJs=function(d,a){var c=document.getElementsByTagName("head")[0]||document.head||document.documentElement;var b=document.createElement("script");b.setAttribute("type","text/javascript");b.setAttribute("charset","UTF-8");b.setAttribute("src",d);if(typeof a==="function"){if(window.attachEvent){b.onreadystatechange=function(){var e=b.readyState;if(e==="loaded"||e==="complete"){b.onreadystatechange=null;a()}}}else{b.onload=a}}c.appendChild(b)};loadJs("https://changyan.sohu.com/upload/changyan.js",function(){
+        window.changyan.api.config({appid:appid,conf:conf})});
+      }
+    })();
+    </script>
+    <script type="text/javascript" src="https://assets.changyan.sohu.com/upload/plugins/plugins.count.js"></script>
   
 
 
